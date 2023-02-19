@@ -2,6 +2,9 @@ package com.springboot.demo.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity(name="Tank")
 public class Tank extends BaseEntity {
@@ -12,12 +15,13 @@ public class Tank extends BaseEntity {
 	
 	@Column(name="Name")
 	private String name;
-	@Column(name="Type")
-	private String type;
 	@Column(name="Tier")
 	private int tier;
 	@Column(name="HitPoints")
 	private int hitPoints;
+	@ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ClassId")
+	private TankClass tankClass;
 	
 	public String getName() {
 		return name;
@@ -25,12 +29,7 @@ public class Tank extends BaseEntity {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getType() {
-		return type;
-	}
-	public void setType(String type) {
-		this.type = type;
-	}
+	
 	public int getTier() {
 		return tier;
 	}
@@ -42,6 +41,12 @@ public class Tank extends BaseEntity {
 	}
 	public void setHitPoints(int hitPoints) {
 		this.hitPoints = hitPoints;
+	}
+	public TankClass getTankClass() {
+		return tankClass;
+	}
+	public void setTankClass(TankClass tankClass) {
+		this.tankClass = tankClass;
 	}
 	
 	
