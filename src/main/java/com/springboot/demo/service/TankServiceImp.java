@@ -34,14 +34,12 @@ public class TankServiceImp implements TankService{
 
 	@Override
 	public void save(Tank entity) {
-		// TODO Auto-generated method stub
-		
+		tankRepository.save(entity);
 	}
 
 	@Override
 	public void deleteById(long theId) {
-		// TODO Auto-generated method stub
-		
+		tankRepository.deleteById(theId);
 	}
 
 	public TankRepository getTankRepository() {

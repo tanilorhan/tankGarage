@@ -36,6 +36,14 @@
 				<td><form:input path="hitPoints" /></td>
 			</tr>
 			<tr>
+			<td>Tank Class</td>
+			<td>
+			<form:select path="tankClass">
+				<form:options items="${tankClasses}" itemValue="id" itemLabel="name" /> 
+			</form:select>
+			</td>
+			<tr>
+			<tr>
 				<td><input type="submit" value="Submit" /></td>
 			</tr>
 		</table>
