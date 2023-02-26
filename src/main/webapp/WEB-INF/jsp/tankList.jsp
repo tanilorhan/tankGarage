@@ -25,7 +25,7 @@
 	<td>${tank.hitPoints}</td>
 	</tr>
 </c:forEach>
-
+<button onclick="window.location.href='${pageContext.request.contextPath}/tank/add';" type="button" class="btn btn-primary">Add a New Tank</button>
 </table>
 
 </body>
