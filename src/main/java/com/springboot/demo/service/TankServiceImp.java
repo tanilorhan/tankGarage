@@ -41,6 +41,10 @@ public class TankServiceImp implements TankService{
 	public void deleteById(long theId) {
 		tankRepository.deleteById(theId);
 	}
+	
+	public List<Tank> getTanksByFilter(int tier,String name){
+		return tankRepository.getTanksByFilter( tier, name);
+	}
 
 	public TankRepository getTankRepository() {
 		return tankRepository;
@@ -49,6 +53,8 @@ public class TankServiceImp implements TankService{
 	public void setTankRepository(TankRepository tankRepository) {
 		this.tankRepository = tankRepository;
 	}
+	
+	
 
 
 
