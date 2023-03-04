@@ -1,0 +1,36 @@
+@charset "ISO-8859-1";
+
+.light-color{
+	background-color: #edf2f4;
+}
+
+.medium-color{
+	background-color: #90a955;
+}
+
+.very-dark-text-color{
+	color:#31572c;
+}
+
+.dark-color{
+	background-color: #4f772d;
+}
+
+.top-div{
+/* 	height:20%; */
+	background-color: #edf2f4;
+/* 	display: block; */
+	height: 10vh; 
+}
+
+.title-background{
+	background-color: #4f772d;
+}
+
+.margin-only-top-10vh{
+	margin:2vh auto;
+}
+
+.home-page-link{
+	color:#edf2f4;
+}
