@@ -9,6 +9,6 @@ import com.springboot.demo.entity.Tank;
 
 public interface TankRepository extends JpaRepository<Tank,Long>{
 	
-	@Query("Select t from Tank t where (:tier is null or t.tier=:tier) and (:name is null or t.name=:name)")
-	public List<Tank> getTanksByFilter(int tier,String name);
+	@Query("Select t from Tank t left join TankClass tc on tc.Id=t.tankClass.id where (:#{#tiers == null} = true or t.tier IN (:tiers)) and (:#{#tankClasses == null} = true or tc.id IN (:tankClasses)) and (:name is null or t.name=:name)")
+	public List<Tank> getTanksByFilter(List<Integer> tiers,List<Long> tankClasses,String name);
 }

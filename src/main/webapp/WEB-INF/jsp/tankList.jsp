@@ -20,17 +20,30 @@
 <body>
 	<sform:form method="POST" modelAttribute="tankFilterParameter">
 		<div class="container">
+		
 			<div class="row">
+			
 				<div class="col">
-					<sform:select path="tier">
+					<sform:label path="name">Name</sform:label>
+					<sform:input path="name"></sform:input>
+				</div>
+
+				<div class="col">				
+					<sform:select path="tiers" multiple="true">
 						<c:forEach items="${tiers}" var="tier">
 							<option label="Tier ${tier}" value="${tier}"></option>
 						</c:forEach>
-
+					</sform:select>	
+				</div>
+				
+				<div class="col">
+					<sform:select path="tankClasses" multiple="true">
+						<c:forEach items="${tankClasses}" var="tankClass">
+							<option label="${tankClass.name}" value="${tankClass.id}"></option>
+						</c:forEach>
 					</sform:select>
 				</div>
-				<div class="col"></div>
-				<div class="col"></div>
+				
 			</div>
 			<div class="row"><input type="submit" value="Search"/></div>
 		</div>

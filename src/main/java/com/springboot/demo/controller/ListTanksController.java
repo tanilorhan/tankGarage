@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.springboot.demo.entity.Tank;
+import com.springboot.demo.entity.TankClass;
 import com.springboot.demo.pojo.TankFilterParameterWrapper;
+import com.springboot.demo.service.TankClassService;
 import com.springboot.demo.service.TankService;
 
 @Controller
@@ -21,7 +23,9 @@ public class ListTanksController {
 	
 	@Autowired
 	private TankService tankService;
-
+	@Autowired
+	private TankClassService tankClassService;
+	
 	public ListTanksController() {
 		// TODO Auto-generated constructor stub
 	}
@@ -32,16 +36,22 @@ public class ListTanksController {
 		model.addAttribute("tanks", tanks);
 		model.addAttribute("tiers", getTiers());
 		model.addAttribute("tankFilterParameter", new TankFilterParameterWrapper());
+		List<TankClass> tankClasses = tankClassService.findAll();
+		model.addAttribute("tankClasses",tankClasses);
 		return "tankList";
 	}
 	
 	@PostMapping
 	public String showTankListFiltered(Model model, @ModelAttribute TankFilterParameterWrapper tankFilterParameter) {
 		List<Tank> tanks = new ArrayList<Tank>();
-		tanks = tankService.getTanksByFilter(tankFilterParameter.getTier(), null);
+		tanks = tankService.getTanksByFilter(tankFilterParameter.getTiers(),tankFilterParameter.getTankClasses(), tankFilterParameter.getName());
 		model.addAttribute("tanks", tanks);
 		model.addAttribute("tiers", getTiers());
 		model.addAttribute("tankFilterParameter", tankFilterParameter);
+		
+		List<TankClass> tankClasses = tankClassService.findAll();
+		model.addAttribute("tankClasses",tankClasses);
+		
 		return "tankList";
 	}
 	

@@ -1,8 +1,10 @@
 package com.springboot.demo.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,8 +44,10 @@ public class TankServiceImp implements TankService{
 		tankRepository.deleteById(theId);
 	}
 	
-	public List<Tank> getTanksByFilter(int tier,String name){
-		return tankRepository.getTanksByFilter( tier, name);
+	public List<Tank> getTanksByFilter(List<Integer> tiers,List<Long> tankClasses,String name){
+		return tankRepository.getTanksByFilter((tiers!=null && !tiers.isEmpty())?tiers:null
+				,(tankClasses!=null && !tankClasses.isEmpty())?tankClasses:null
+				, !Strings.isEmpty(name)?name:null);
 	}
 
 	public TankRepository getTankRepository() {
