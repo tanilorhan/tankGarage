@@ -16,39 +16,80 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
 	crossorigin="anonymous"></script>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/styles.css">
 </head>
-<body>
-	<sform:form method="POST" modelAttribute="tankFilterParameter">
-		<div class="container">
-		
-			<div class="row">
-			
-				<div class="col">
-					<sform:label path="name">Name</sform:label>
-					<sform:input path="name"></sform:input>
-				</div>
+<body class="light-color">
 
-				<div class="col">				
-					<sform:select path="tiers" multiple="true">
-						<c:forEach items="${tiers}" var="tier">
-							<option label="Tier ${tier}" value="${tier}"></option>
-						</c:forEach>
-					</sform:select>	
+	<div class="container">
+		<div class="row top-div"></div>
+
+		<div class="row">
+			<div class="row dark-color" style="color: #edf2f4;">
+				<div class="col-md-3"></div>
+				<div class="col-md-6">
+					<sform:form method="POST" modelAttribute="tankFilterParameter">
+						<div class="container" style="margin: 2vh auto;">
+
+							<div class="row">
+
+								<div class="col py-3 mx-3">
+									<div class="row"><sform:label path="name">Name</sform:label></div>
+									<div class="row"><sform:input path="name"></sform:input></div>
+								</div>
+
+								<div class="col py-3 mx-3">
+									<div class="row">
+										<sform:label path="tiers">Tier</sform:label>
+									</div>
+									<div class="row">
+										<sform:select path="tiers" multiple="true">
+											<c:forEach items="${tiers}" var="tier">
+												<option label="Tier ${tier}" value="${tier}"></option>
+											</c:forEach>
+										</sform:select>
+									</div>
+								</div>
+
+								<div class="col py-3  mx-3">
+									<div class="row">
+										<sform:label path="tankClasses">Class</sform:label>
+									</div>
+									<div class="row">
+										<sform:select path="tankClasses" multiple="true">
+											<c:forEach items="${tankClasses}" var="tankClass">
+												<option label="${tankClass.name}" value="${tankClass.id}"></option>
+											</c:forEach>
+										</sform:select>
+									</div>
+								</div>
+
+							</div>
+							<div class="row mx-1">
+								<input type="submit" value="Search" />
+							</div>
+						</div>
+
+					</sform:form>
 				</div>
-				
-				<div class="col">
-					<sform:select path="tankClasses" multiple="true">
-						<c:forEach items="${tankClasses}" var="tankClass">
-							<option label="${tankClass.name}" value="${tankClass.id}"></option>
-						</c:forEach>
-					</sform:select>
-				</div>
-				
+				<div class="col-md-3"></div>
 			</div>
-			<div class="row"><input type="submit" value="Search"/></div>
+			<div class="row medium-color" style="height: 70vh;">
+				<div class="col-md-3"></div>
+				<div class="col-md-6">
+					<h4 class="margin-only-top-10vh">
+						<a class="very-dark-text-color"
+							href="${pageContext.request.contextPath}/listTanks">Tank List</a>
+					</h4>
+				</div>
+				<div class="col-md-3"></div>
+			</div>
 		</div>
 
-	</sform:form>
+		<div class="row"></div>
+	</div>
+
+
 	<table>
 		<tr>
 			<th>Tier</th>
@@ -64,12 +105,12 @@
 				<td>${tank.hitPoints}</td>
 			</tr>
 		</c:forEach>
-		
+
 	</table>
-	
+
 	<button
-			onclick="window.location.href='${pageContext.request.contextPath}/tank/add';"
-			type="button" class="btn btn-primary">Add a New Tank</button>
+		onclick="window.location.href='${pageContext.request.contextPath}/tank/add';"
+		type="button" class="btn btn-primary">Add a New Tank</button>
 
 </body>
 </html>
