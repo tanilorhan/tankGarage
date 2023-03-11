@@ -106,34 +106,34 @@
 				<div class="col-md-3"></div>
 			</div>
 			<div class="row medium-color" style="height: 70vh;">
-				<div class="col-md-3"></div>
-				<div class="col-md-6">
-					<div
-						style="border-style: solid; border-width: 5px 20px; border-color: #4f772d; margin-left: 0px; margin-right: 0px;">
+				<div class="col-md-1"></div>
+				<div class="col-md-10">
+					<div class="dark-color"
+						style="border-style: solid; border-width: 5px 10px; border-color: #4f772d; margin-left: 0px; margin-right: 0px;">
 						<table style="margin: 0px auto;">
 							<tr>
-								<th class="margin-padding-0"><div class="table-text">Tier</div></th>
-								<th class="margin-padding-0"><div class="table-text">Type</div></th>
-								<th class="margin-padding-0"><div class="table-text">Name</div></th>
-								<th class="margin-padding-0"><div class="table-text">HitPoints</div></th>
+								<th class="margin-padding-0 medium-color"><div class="table-text">Tier</div></th>
+								<th class="margin-padding-0 medium-color"><div class="table-text">Type</div></th>
+								<th class="margin-padding-0 medium-color"><div class="table-text">Name</div></th>
+								<th class="margin-padding-0 medium-color"><div class="table-text">HitPoints</div></th>
 							</tr>
 							<c:forEach var="tank" items="${tanks}">
 								<tr>
-									<td class="margin-padding-0"><div class="table-text">${tank.tier}</div></td>
-									<td class="margin-padding-0"><div class="table-text">${tank.tankClass.name}</div></td>
-									<td class="margin-padding-0"><div class="table-text">${tank.name}</div></td>
-									<td class="margin-padding-0"><div class="table-text">${tank.hitPoints}</div></td>
+									<td class="margin-padding-0 medium-color"><div class="table-text">${tank.tier}</div></td>
+									<td class="margin-padding-0 medium-color"><div class="table-text">${tank.tankClass.name}</div></td>
+									<td class="margin-padding-0 medium-color"><div class="table-text">${tank.name}</div></td>
+									<td class="margin-padding-0 medium-color"><div class="table-text">${tank.hitPoints}</div></td>
 								</tr>
 							</c:forEach>
 
 						</table>
 					</div>
 				</div>
-				<div class="col-md-3"></div>
+				<div class="col-md-1"></div>
 			</div>
 		</div>
 
-		<div class="row"></div>
+		<div class="row"  style="height: 10vh;"></div>
 	</div>
 
 

@@ -33,7 +33,7 @@
 	padding:1px 2px;
 	border:solid;
 	border-color:#4f772d;
-	border-width:0.5vh 1vh;
+	border-width:0.1vh 0.2vh;
 }
 
 .margin-padding-0{
@@ -45,7 +45,7 @@
 /* 	height:20%; */
 	background-color: #edf2f4;
 /* 	display: block; */
-	height: 10vh; 
+	height: 3vh; 
 }
 
 .title-background{
