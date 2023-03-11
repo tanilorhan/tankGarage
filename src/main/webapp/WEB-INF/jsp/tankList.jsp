@@ -28,82 +28,105 @@
 			<div class="row dark-color" style="color: #edf2f4;">
 				<div class="col-md-3"></div>
 				<div class="col-md-6">
-					<sform:form method="POST" modelAttribute="tankFilterParameter">
-						<div class="container" style="margin: 2vh auto;">
+					<div class="accordion accordion-flush" id="accordionExample">
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="headingOne">
+								<button class="accordion-button" type="button"
+									data-bs-toggle="collapse" data-bs-target="#collapseOne"
+									aria-expanded="true" aria-controls="collapseOne">
+									Filter Tanks</button>
+							</h2>
+							<div id="collapseOne" class="accordion-collapse collapse show"
+								aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+								<div class="accordion-body">
+									<sform:form method="POST" modelAttribute="tankFilterParameter">
+										<div class="container" style="margin: 2vh auto;">
+											<div class="row"></div>
 
-							<div class="row">
+											<div class="col py-3 mx-3">
+												<div class="row">
+													<sform:label path="name">Name</sform:label>
+												</div>
+												<div class="row">
+													<sform:input path="name"></sform:input>
+												</div>
+											</div>
 
-								<div class="col py-3 mx-3">
-									<div class="row">
-										<sform:label path="name">Name</sform:label>
-									</div>
-									<div class="row">
-										<sform:input path="name"></sform:input>
-									</div>
+											<div class="col py-3 mx-3">
+												<div class="row">
+													<sform:label path="tiers">Tier</sform:label>
+												</div>
+												<div class="row">
+													<sform:select path="tiers" multiple="true">
+														<c:forEach items="${tiers}" var="tier">
+															<option label="Tier ${tier}" value="${tier}"></option>
+														</c:forEach>
+													</sform:select>
+												</div>
+											</div>
+
+											<div class="col py-3  mx-3">
+												<div class="row">
+													<sform:label path="tankClasses">Class</sform:label>
+												</div>
+												<div class="row">
+													<sform:select path="tankClasses" multiple="true">
+														<c:forEach items="${tankClasses}" var="tankClass">
+															<option label="${tankClass.name}" value="${tankClass.id}"></option>
+														</c:forEach>
+													</sform:select>
+												</div>
+											</div>
+											<div class="row mx-1">
+												<input type="submit" value="Search" />
+											</div>
+
+
+										</div>
+
+									</sform:form>
+
 								</div>
-
-								<div class="col py-3 mx-3">
-									<div class="row">
-										<sform:label path="tiers">Tier</sform:label>
-									</div>
-									<div class="row">
-										<sform:select path="tiers" multiple="true">
-											<c:forEach items="${tiers}" var="tier">
-												<option label="Tier ${tier}" value="${tier}"></option>
-											</c:forEach>
-										</sform:select>
-									</div>
-								</div>
-
-								<div class="col py-3  mx-3">
-									<div class="row">
-										<sform:label path="tankClasses">Class</sform:label>
-									</div>
-									<div class="row">
-										<sform:select path="tankClasses" multiple="true">
-											<c:forEach items="${tankClasses}" var="tankClass">
-												<option label="${tankClass.name}" value="${tankClass.id}"></option>
-											</c:forEach>
-										</sform:select>
-									</div>
-								</div>
-
-							</div>
-							<div class="row mx-1">
-								<input type="submit" value="Search" />
 							</div>
 						</div>
+					</div>
 
-					</sform:form>
 				</div>
 				<div class="col-md-3"></div>
 			</div>
-			<div class="row medium-color" style="padding: 2vh 0;" >
+			<div class="row medium-color" style="padding: 2vh 0;">
 				<div class="col-md-3"></div>
-				<div class="col-md-6"><button onclick="window.location.href='${pageContext.request.contextPath}/tank/add';" type="button" class="btn light-text-color dark-color" style="margin-left: auto; margin-right: auto; width:100%">Add a New Tank</button></div>
+				<div class="col-md-6">
+					<button
+						onclick="window.location.href='${pageContext.request.contextPath}/tank/add';"
+						type="button" class="btn light-text-color dark-color"
+						style="margin-left: auto; margin-right: auto; width: 100%">Add
+						a New Tank</button>
+				</div>
 				<div class="col-md-3"></div>
 			</div>
 			<div class="row medium-color" style="height: 70vh;">
 				<div class="col-md-3"></div>
 				<div class="col-md-6">
-					<div style=" border-style:solid; border-width: 5px 20px; border-color:#4f772d; margin-left:0px; margin-right:0px;">
-					<table style="margin: 0px auto;">
-						<tr>
-							<th class="margin-padding-0"><div class="table-text">Tier</div></th>
-							<th class="margin-padding-0"><div class="table-text">Type</div></th>
-							<th class="margin-padding-0"><div class="table-text">Name</div></th>
-							<th class="margin-padding-0"><div class="table-text">HitPoints</div></th>
-						</tr>
-						<c:forEach var="tank" items="${tanks}">
+					<div
+						style="border-style: solid; border-width: 5px 20px; border-color: #4f772d; margin-left: 0px; margin-right: 0px;">
+						<table style="margin: 0px auto;">
 							<tr>
-								<td class="margin-padding-0"><div class="table-text">${tank.tier}</div></td>
-								<td class="margin-padding-0"><div class="table-text">${tank.tankClass.name}</div></td>
-								<td class="margin-padding-0"><div class="table-text">${tank.name}</div></td>
-								<td class="margin-padding-0"><div class="table-text">${tank.hitPoints}</div></td>
+								<th class="margin-padding-0"><div class="table-text">Tier</div></th>
+								<th class="margin-padding-0"><div class="table-text">Type</div></th>
+								<th class="margin-padding-0"><div class="table-text">Name</div></th>
+								<th class="margin-padding-0"><div class="table-text">HitPoints</div></th>
 							</tr>
-						</c:forEach>
+							<c:forEach var="tank" items="${tanks}">
+								<tr>
+									<td class="margin-padding-0"><div class="table-text">${tank.tier}</div></td>
+									<td class="margin-padding-0"><div class="table-text">${tank.tankClass.name}</div></td>
+									<td class="margin-padding-0"><div class="table-text">${tank.name}</div></td>
+									<td class="margin-padding-0"><div class="table-text">${tank.hitPoints}</div></td>
+								</tr>
+							</c:forEach>
 
-					</table>
+						</table>
 					</div>
 				</div>
 				<div class="col-md-3"></div>
@@ -116,7 +139,7 @@
 
 
 
-	
+
 
 </body>
 </html>
