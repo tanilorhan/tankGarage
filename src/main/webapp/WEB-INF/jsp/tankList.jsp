@@ -34,8 +34,12 @@
 							<div class="row">
 
 								<div class="col py-3 mx-3">
-									<div class="row"><sform:label path="name">Name</sform:label></div>
-									<div class="row"><sform:input path="name"></sform:input></div>
+									<div class="row">
+										<sform:label path="name">Name</sform:label>
+									</div>
+									<div class="row">
+										<sform:input path="name"></sform:input>
+									</div>
 								</div>
 
 								<div class="col py-3 mx-3">
@@ -74,13 +78,33 @@
 				</div>
 				<div class="col-md-3"></div>
 			</div>
+			<div class="row medium-color" style="padding: 2vh 0;" >
+				<div class="col-md-3"></div>
+				<div class="col-md-6"><button onclick="window.location.href='${pageContext.request.contextPath}/tank/add';" type="button" class="btn light-text-color dark-color" style="margin-left: auto; margin-right: auto; width:100%">Add a New Tank</button></div>
+				<div class="col-md-3"></div>
+			</div>
 			<div class="row medium-color" style="height: 70vh;">
 				<div class="col-md-3"></div>
 				<div class="col-md-6">
-					<h4 class="margin-only-top-10vh">
-						<a class="very-dark-text-color"
-							href="${pageContext.request.contextPath}/listTanks">Tank List</a>
-					</h4>
+					<div style=" border-style:solid; border-width: 5px 20px; border-color:#4f772d; margin-left:0px; margin-right:0px;">
+					<table style="margin: 0px auto;">
+						<tr>
+							<th class="margin-padding-0"><div class="table-text">Tier</div></th>
+							<th class="margin-padding-0"><div class="table-text">Type</div></th>
+							<th class="margin-padding-0"><div class="table-text">Name</div></th>
+							<th class="margin-padding-0"><div class="table-text">HitPoints</div></th>
+						</tr>
+						<c:forEach var="tank" items="${tanks}">
+							<tr>
+								<td class="margin-padding-0"><div class="table-text">${tank.tier}</div></td>
+								<td class="margin-padding-0"><div class="table-text">${tank.tankClass.name}</div></td>
+								<td class="margin-padding-0"><div class="table-text">${tank.name}</div></td>
+								<td class="margin-padding-0"><div class="table-text">${tank.hitPoints}</div></td>
+							</tr>
+						</c:forEach>
+
+					</table>
+					</div>
 				</div>
 				<div class="col-md-3"></div>
 			</div>
@@ -90,27 +114,9 @@
 	</div>
 
 
-	<table>
-		<tr>
-			<th>Tier</th>
-			<th>Type</th>
-			<th>Name</th>
-			<th>HitPoints</th>
-		</tr>
-		<c:forEach var="tank" items="${tanks}">
-			<tr>
-				<td>${tank.tier}</td>
-				<td>${tank.tankClass.name}</td>
-				<td>${tank.name}</td>
-				<td>${tank.hitPoints}</td>
-			</tr>
-		</c:forEach>
 
-	</table>
 
-	<button
-		onclick="window.location.href='${pageContext.request.contextPath}/tank/add';"
-		type="button" class="btn btn-primary">Add a New Tank</button>
+	
 
 </body>
 </html>
