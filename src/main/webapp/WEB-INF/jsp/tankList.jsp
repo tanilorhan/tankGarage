@@ -36,7 +36,7 @@
 									aria-expanded="true" aria-controls="collapseOne">
 									Filter Tanks</button>
 							</h2>
-							<div id="collapseOne" class="accordion-collapse collapse show"
+							<div id="collapseOne" class="accordion-collapse collapse"
 								aria-labelledby="headingOne" data-bs-parent="#accordionExample">
 								<div class="accordion-body">
 									<sform:form method="POST" modelAttribute="tankFilterParameter">
