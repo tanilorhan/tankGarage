@@ -3,6 +3,7 @@ package com.springboot.demo.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -57,16 +58,27 @@ public class RegistrationController {
 	}
 	
 	@PostMapping
-	public void processRegistration(RegistrationDTO dto) {
-//		System.out.println(dto.getUserName());
-//		System.out.println(dto.getPassword());
+	public String processRegistration(RegistrationDTO dto,Model model) {
+		if(dto.getUserName()==null || dto.getUserName().isBlank()) {
+			model.addAttribute("errorMessage", "User name must be filled!");
+			return "registration";
+		}
+		User user = userRepository.findByUsernameAndDeletedFalse(dto.getUserName());
+		if(user!=null) {
+			model.addAttribute("errorMessage", "User name is already taken, enter a different user name.");
+			return "registration";
+		}
 		if(dto.getPassword()!=null && dto.getPasswordConfirm()!=null && dto.getPassword().equals(dto.getPasswordConfirm())) {
-			User user = new User();
+			user = new User();
 			user.setCreateTime(DateUtility.getCurrentTimestamp());
 			user.setUpdateTime(DateUtility.getCurrentTimestamp());
 			user.setUsername(dto.getUserName());
 			user.setPassword(passwordEncoder.encode(dto.getPassword()));
 			userRepository.save(user);
+			return "login";
+		}else {
+			model.addAttribute("errorMessage", "Passwords did not match. Enter same password twice.");
+			return "registration";
 		}
 		
 	}

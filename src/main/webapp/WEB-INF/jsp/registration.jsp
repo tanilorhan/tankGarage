@@ -36,17 +36,22 @@
 				<div class="col-md-6">
 					<form action="${pageContext.request.contextPath}/registration"
 						method="POST">
+							<c:if test="${errorMessage != null}">
+								<div class="row" style="margin-top:2vh;">
+									<p style="text-align:center;">Error: ${errorMessage}</p>
+								</div>
+							</c:if>
 							<div class="row" style="margin-top:2vh;">
-								<div class="col-md-6" style="text-align:right;"><label for="userName">UserName</label></div>
-								<div class="col-md-6" style="text-align:left;"> <input size="14" type="text" id="userName" name="userName"></div>
+								<div class="col-6" style="text-align:right;"><label for="userName">UserName</label></div>
+								<div class="col-6" style="text-align:left;"> <input size="14" type="text" id="userName" name="userName"></div>
 							</div>
 							<div class="row" style="margin-top:2vh;">
-								<div class="col-md-6" style="text-align:right;"><label for="password">Enter password</label> </div>
-								<div class="col-md-6" style="text-align:left;"><input size="14" type="password" id="password" name="password"></div>
+								<div class="col-6" style="text-align:right;"><label for="password">Enter password</label> </div>
+								<div class="col-6" style="text-align:left;"><input size="14" type="password" id="password" name="password"></div>
 							</div>
 							<div class="row" style="margin-top:2vh;">
-								<div class="col-md-6" style="text-align:right;"><label for="passwordConfirm">Reenter password</label> </div>
-								<div class="col-md-6" style="text-align:left;"><input size="14" type="password" id="passwordConfirm" name="passwordConfirm"></div>
+								<div class="col-6" style="text-align:right;"><label for="passwordConfirm">Reenter password</label> </div>
+								<div class="col-6" style="text-align:left;"><input size="14" type="password" id="passwordConfirm" name="passwordConfirm"></div>
 							</div>
 							<div class="row" style="margin: 2vh 4vw"><input type="submit" value="Submit"></div>
 					</form>

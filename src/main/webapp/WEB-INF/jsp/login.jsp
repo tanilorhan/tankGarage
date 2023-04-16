@@ -42,12 +42,12 @@
 								</div>
 							</c:if>
 							<div class="row" style="margin-top:2vh;">
-								<div class="col-md-6" style="text-align:right;"><label for="username">UserName</label> </div>
-								<div class="col-md-6" style="text-align:left;"><input size="16" type="text" id="username" name="username"></div>
+								<div class="col-sm-6" style="text-align:right;"><label for="username">UserName</label> </div>
+								<div class="col-sm-6" style="text-align:left;"><input size="16" type="text" id="username" name="username"></div>
 							</div>
 							<div class="row" style="margin-top:2vh;">
-								<div class="col-md-6" style="text-align:right;"><label for="password">Enter password</label> </div>
-								<div class="col-md-6" style="text-align:left;"><input size="16" type="password" id="password" name="password"></div>
+								<div class="col-sm-6" style="text-align:right;"><label for="password">Enter password</label> </div>
+								<div class="col-sm-6" style="text-align:left;"><input size="16" type="password" id="password" name="password"></div>
 							</div>
 							<div class="row" style="margin: 2vh 4vw"><input type="submit" value="Login"></div>
 					</form>
