@@ -39,7 +39,9 @@ public class SecurityConfig {
 				.requestMatchers("/tank/*").authenticated()
 //				.requestMatchers("listTanks").authenticated()
 				.anyRequest().permitAll()
-				.and().formLogin().loginPage("/login").and().build();
+				.and().formLogin().loginPage("/login")
+				.and().logout().logoutSuccessUrl("/")
+				.and().build();
 
 	}
 

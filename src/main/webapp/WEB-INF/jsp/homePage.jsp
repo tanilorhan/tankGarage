@@ -52,6 +52,10 @@
 								href="${pageContext.request.contextPath}/registration">Register</a>
 						</h4>
 					</div>
+					<div class="row margin-only-top-10vh">
+						<form action="${pageContext.request.contextPath}/logout"
+						method="POST"><div class="row"><input type="submit" value="Logout"/></div></form>
+					</div>
 				</div>
 				<div class="col-md-3"></div>
 			</div>
