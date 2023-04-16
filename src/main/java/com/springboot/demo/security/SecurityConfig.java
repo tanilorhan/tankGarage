@@ -3,12 +3,15 @@ package com.springboot.demo.security;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+@EnableWebSecurity
 @Configuration
 public class SecurityConfig {
 
@@ -30,19 +33,13 @@ public class SecurityConfig {
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		return http
-//				.cors().and().csrf().disable()
-				.authorizeHttpRequests()
-//				.requestMatchers("/","/**").permitAll()
-//				.and().authorizeHttpRequests()
-//				.requestMatchers("/registration","/listTanks").anonymous()
-//				.requestMatchers("/login").permitAll()
-//				.requestMatchers("/registration").permitAll()
-//				.requestMatchers("/listTanks").permitAll()
-//				.and().authorizeHttpRequests()
-//				.anyRequest().authenticated()
+		http = http.csrf().disable();
+		return http.authorizeHttpRequests()
+				.requestMatchers("/listTanks").authenticated()
+				.requestMatchers("/tank/*").authenticated()
+//				.requestMatchers("listTanks").authenticated()
 				.anyRequest().permitAll()
-				.and().build();
+				.and().formLogin().loginPage("/login").and().build();
 
 	}
 

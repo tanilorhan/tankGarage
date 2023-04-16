@@ -15,3 +15,4 @@ drop table "User";
 
 insert into "User" values (1,NOW()::timestamp,NOW()::timestamp,'torhan',false,'torhan','$2a$12$3VAMLeojDngyz13VKIezXeF5dvvPNbZGfAcfsBdqcVV9y7jG3fSwG');
 
+alter table "User" add unique ("Username");

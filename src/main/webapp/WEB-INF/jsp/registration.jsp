@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="jakarta.tags.core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +10,7 @@
 <body>
 
 	<h1>Register</h1>
-<form action="${pageContext.request.contextPath}" method="POST">
+<form action="${pageContext.request.contextPath}/registration" method="POST">
 	<label for="userName">UserName</label>
 	<input type="text" id="userName" name="userName"><br>
 	
